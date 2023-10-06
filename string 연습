@@ -1,0 +1,20 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+	string str1 = "abcdef";
+	string str2 = "bbbbbb";
+	string str3;
+	string str4 = "abcdef";
+	
+
+	cout <<str1.at(3) << endl;          //index 위치의 문자 반환. 유효한 범위인지 체크 O
+	cout << str1.length() << endl;      //문자열 길이 반환
+	cout<<str1.size()<<endl;			//문자열 길이 반환 (length와 동일)
+	cout << str1.find("ef") << endl;   //"abcd"가 str에 포함되어있는지를 확인. 찾으면 해당 부분의 첫번째 index를 반환
+	cout << str1.substr() << endl;		//str 전체를 반환
+	cout << str3.empty() << endl;		// str이 빈문자열인지 확인-- 빈문자열이면 1(true) 아니면 0(false)출력
+	str1.clear() ;		//저장된 문자열을 모두 지움
+	cout << str1 << endl;
+}
