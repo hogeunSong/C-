@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+	string word = "fred";
+	cout << word.length() << '\n';
+	if (word.empty())
+		cout << "empty" << endl;
+	else
+		cout << "not empty" << endl;
+
+	word.clear();
+	if (word.empty())
+		cout << "empty" << endl;
+	else
+		cout << "not empty" << endl;
+
+	word = "good";
+	cout << word << endl;
+	word += "-bye";
+	cout << word << endl;
+
+	cout << word[0] << endl;
+	cout << word[word.length() - 1] << endl;			//e
+	cout << word.substr(2, 5);							//od-by
+	
+	string first = "ABC", last = "XYZ";
+	cout << first + last << '\n';
+	cout << "Compare " << first << "and ABC : ";
+	if (first == "ABC")
+		cout << "equal" << endl;
+	else
+		cout << "not equal" << endl;
+	
+	cout << "Compare " << first << "and XYZ : ";
+	if(first =="XYZ")
+		cout<<"equal"<<endl;
+	else
+		cout << "not equal" << endl;
+}
