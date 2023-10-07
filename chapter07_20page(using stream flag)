@@ -1,0 +1,29 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main() {
+	char aChar;
+
+	cout << "Enter <space z>       : ";
+	cin >> aChar;
+
+	cout << "Character read is     : " << aChar;	//공백을 제거해서 나옴. 11~13줄
+	cin.unsetf(ios::skipws);
+	cin >> aChar;
+
+	cout << "\nCharacter read is    :" << (int)aChar << endl;
+	
+	cout << "Enter <space z> again  :";
+	cin >> aChar;
+
+	cout << "Character read is     :" << (int)aChar << '\n'; //32 출력
+
+	cin >> aChar;
+	cout << "Character read is     :" << (int)aChar << '\n'; //122출력
+
+	cin >> aChar;
+	cout << "Character read is       :" << (int)aChar << '\n'; //10출력
+	return 0;
+}
