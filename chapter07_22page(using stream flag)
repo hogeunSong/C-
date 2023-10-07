@@ -1,0 +1,22 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main() {
+	cout << "Default justification   : |";
+	cout.width(10);
+	cout << 12345 <<"|" << '\n';
+
+	cout.setf(ios::left, ios::adjustfield);		//adjustfield::필드조정이라는 의미
+	cout << "Left justification      : |";
+	cout.width(10);
+	cout << 12345 << "|\n";
+	
+	cout.setf(ios::right, ios::adjustfield);
+	cout << "Right justification     : |";
+	cout.width(10);
+	cout << 12345 << "|\n";
+	return 0;
+
+}
