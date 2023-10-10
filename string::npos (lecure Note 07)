@@ -1,0 +1,20 @@
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+	string data = "Good-bye";
+	
+	//data.find("od") 의 출력값: 2
+
+	cout << data.find("od") << endl;
+
+				//2					//-1
+	cout << (data.find("od") != string::npos) << endl;			// 출력값: 1
+	cout << (data.find("od") == string::npos) << endl;			// 출력값: 0
+
+				//쓰레기값			//npos
+	cout << (data.find("korea") == string::npos) << endl;		// 출력값: 1  //npos와 쓰레기값을 동일하다고 생각
+
+	// string::npos란 -1 값을 가지는 상수로, find() 함수 수행 시에 찾는 문자열이 없을 때 반환된다.
