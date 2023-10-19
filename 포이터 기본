@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	
+	int x;
+	x = 4;
+	int *p;
+	p = &x;
+	cout << p << endl;		//000000D24F13F774 출력
+	cout << *p << endl;		// 4 출력
+
+	*p= 7;
+	cout << *p << endl;		// 7 출력
+}
