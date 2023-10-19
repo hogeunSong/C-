@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	int* dy;
+	dy = new int[4];
+	for (int i = 0; i < 4; i++) {
+		cin >> dy[i];
+	}
+	for (int i = 0; i < 4; i++) {
+		cout << dy[i]<<" ";
+	}
+	delete[] dy;
+}
