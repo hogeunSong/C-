@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+void print(int* arr, int n) {
+	int* begin = arr;				//포인터 표기법
+	int* end = arr + n;
+	for (int* curr = begin; curr != end; curr++) {
+		cout << *curr;
+		cout << " ";
+	}
+	cout << endl;
+}
+
+void input(int* numbers, int n) {
+	for (int i = 0; i < n; i++) {		//배열 표기법
+		cin >> numbers[i];
+		cout << " ";
+	}
+}
+
+int main() {
+	int n=3;
+	int* numbers = new int[n];		//동적 배열 활용
+	input(numbers, n);
+	print(numbers, n);
+
+	delete[] numbers;
+	return 0;
+}
