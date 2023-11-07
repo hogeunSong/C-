@@ -1,0 +1,97 @@
+#include <iostream>
+using namespace std;
+
+class Point {
+private:
+	double x;
+	double y;
+	static int countCreatedObjects;
+
+public:
+	Point();
+	Point(int x, int y);
+	void setPoint(int x, int y);
+	int getX(void) const;
+	int getY(void) const;
+	static int getCreatedObject(void);
+	Point operator+(const Point& point);
+	Point& operator=(const Point& point);
+	friend std::ostream& operator<<(std::ostream& os, const Point& point);
+	friend class SpyPoint;
+
+};
+
+int Point::countCreatedObjects = 0;
+
+Point::Point() {
+	x = y = 0;
+	countCreatedObjects++;
+}
+
+Point::Point(int x, int y) {
+	this->x = x;
+	this->y = y;
+	countCreatedObjects++;
+
+}
+
+void Point::setPoint(int x, int y) {
+	this->x = x;
+	this->y = y;
+}
+
+int Point::getX(void) const {
+	return this->x;
+}
+
+int Point::getY(void) const {
+	return this->y;
+}
+
+int Point::getCreatedObject(void) {
+	return countCreatedObjects;
+}
+
+Point Point::operator+(const Point& point) {
+	Point result(this->x + point.getX(), this->y + point.getY());
+	return result;
+}
+
+Point& Point::operator=(const Point& point)
+{
+	this->x = point.getX();
+	this->y = point.getY();
+	return *this;
+}
+std::ostream& operator<<(std::ostream& os, const Point& point)
+{
+	return os << "(" << point.x << "," << point.y << ")";
+}
+
+class SpyPoint {
+public:
+	void printPoint(const Point& point);
+};
+void SpyPoint::printPoint(const Point& point) {
+	cout << "{X: " << point.x << " }" << "{Y: " << point.y << " }" << endl;
+}
+
+int main() {
+	Point* pP1, * pP2;
+	pP1 = new Point;
+	pP2 = new Point(1, 2);
+
+	pP1->setPoint(10, 20);
+	*pP2 = *pP1 + *pP2;
+
+	cout << "[X:" << pP1->getX() << "]" << "[Y:" << pP1->getY() << "]" << endl;
+	cout << *pP2 << endl;
+
+	SpyPoint SP;
+	SP.printPoint(*pP1);
+	SP.printPoint(*pP2);
+
+	delete pP1;
+	delete pP2;
+
+}
