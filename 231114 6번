@@ -1,0 +1,202 @@
+#include <iostream>
+using namespace std;
+
+class Train {
+public:
+	Train() {}
+	Train(int people) { mPeople = people; }
+	~Train() {}
+	virtual int station(int takeOff, int takeOn) { return mPeople += takeOn - takeOff; }
+protected:
+	int mPeople; // 사람 수
+};
+
+
+class Ktx : public Train {
+public:
+	Ktx() : Train::Train(0) {}
+	Ktx(int people) : Train::Train(people) {}
+	~Ktx() {}
+	// 기차에 사람이 타고 내리는 함수
+	int station(int takeOff, int takeOn) { return mPeople += takeOn - takeOff; }
+	int getPeople() { return mPeople; }
+};
+int main()
+{
+	Ktx k;
+	
+	int off, on;
+	int best = 0;
+	for (int i = 0; i < 5; i++) {
+		cout << i + 1 << "번역: ";
+		cin >> off >> on;
+
+		if (k.getPeople() < off) {
+			cout << "정원미달입니다." << endl;
+			break;
+		}
+
+		if (k.getPeople() + on > 300) {
+			cout << "정원초과입니다." << endl;
+			break;
+		}
+
+		k.station(off, on);
+		if (best < k.getPeople()) {
+			best = k.getPeople();
+		}
+
+		if (i == 4) {
+			cout << "가장 많은 사람이 탑승 했을 때의 사람 수: ";
+			cout << best;
+		}
+
+	}
+	return 0;
+}
+
+
+
+/*
+#include <iostream>
+using namespace std;
+
+class Train {
+public:
+	Train() {}
+	Train(int people) { mPeople = people; }
+	~Train() {}
+	virtual int station(int takeOff, int takeOn) { 
+		mPeople = mPeople - takeOff + takeOn;
+		return mPeople;
+	}
+protected:
+	int mPeople; // 사람 수
+};
+
+class Ktx : public Train {
+public:
+	Ktx() : Train(0) {}
+	Ktx(int people) : Train(people) {}
+	~Ktx() {}
+
+	// 기차에 사람이 타고 내리는 함수
+	int station(int takeOff, int takeOn) { return Train::mPeople += takeOn - takeOff; }
+	int getPeople() { return mPeople; }
+};
+
+
+int main()
+{
+	Ktx k;
+	
+	int r = 1;
+	while (r) {
+		int  a2, b1, b2, c1, c2, d1, d2, e1,e2;
+		int a, b, c, d, e;
+
+		cout << "1번역: " << 0 << " ";
+		cin >> a2;
+		if (a2 > 300) {
+			cout << "정원초과입니다\n";
+			exit(100);
+		}
+		if (a2 < 0) {
+			cout << "정원미달입니다\n";
+			exit(100);
+		}
+		k.station(0, a2);
+		a = k.getPeople();
+
+		
+		
+		cout << "2번역: ";
+		cin >> b1;
+		cin >> b2;
+		k.station(b1, b2);
+		b = k.getPeople();
+		if (k.getPeople() < 0) {
+			cout << "정원미달입니다";
+			exit(100);
+		}
+		if (k.getPeople() >300) {
+			cout << "정원초과입니다";
+			exit(100);
+		}
+
+		cout << "3번역: ";
+		cin >> c1;
+		cin >> c2;
+		k.station(c1, c2);
+		c = k.getPeople();
+		if (k.getPeople() < 0) {
+			cout << "정원미달입니다";
+			exit(100);
+		}
+		if (k.getPeople() > 300) {
+			cout << "정원초과입니다";
+			exit(100);
+		}
+
+		cout << "4번역: ";
+		cin >> d1;
+		cin >> d2;
+		k.station(d1, d2);
+		d = k.getPeople();
+		if (k.getPeople() < 0) {
+			cout << "정원미달입니다";
+			exit(100);
+		}
+		if (k.getPeople() > 300) {
+			cout << "정원초과입니다";
+			exit(100);
+		}
+
+		cout << "5번역: ";
+		cin >> e1;
+		cin >> e2;
+		k.station(e1, 0);
+		e = k.getPeople();
+		if (k.getPeople() < 0) {
+			cout << "정원미달입니다";
+			exit(100);
+		}
+		if (k.getPeople() > 300) {
+			cout << "정원초과입니다";
+			exit(100);
+		}
+
+
+		cout << "가장 많은 사람이 탑승 했을 때의 사람 수: ";
+		int best = 0;
+		
+		if (a > b && a > c && a > d && a> e) {
+			best = a;
+			cout << best;
+			break;
+		}
+		if (b > a && b > c && b > d && b > e) {
+			best = b;
+			cout << best;
+			break;
+		}
+		if (c>a && c > b&& c > d && c> e) {
+			best = c;
+			cout << best;
+			break;
+		}
+		if (d> a && d > b && d> c && d> e) {
+			best = d;
+			cout << best;
+			break;
+		}
+		if (e > a && e > b && e > c && e > d) {
+			best = e;
+			cout << best;
+			break;
+		}
+	
+	}
+
+	return 0;
+} */
